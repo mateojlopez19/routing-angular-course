@@ -1,1 +1,16 @@
-<p>contact works!</p>
+<div class="container">
+  <form [formGroup]="formularioContacto" (ngSubmit)="enviar()">
+    <div class="mb-3">
+      <label for="name" class="form-label">nombre</label>
+      <input [ngClass]="{'is-invalid': hasErrors('name', 'required') || hasErrors('name', 'minlength')}" type="text" class="form-control" id="name" formControlName="name">
+      <div class="text-danger" *ngIf="hasErrors('name', 'required')">nombre requerido</div>
+      <div class="text-danger" *ngIf="hasErrors('name', 'minlength')">nombre requiere minimo 3 caracteres</div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input [ngClass]="{'is-invalid': hasErrors('name', 'required')}" type="email" class="form-control" id="email" formControlName="email">
+      <div class="text-danger" *ngIf="hasErrors('email', 'required')">email requerido</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
