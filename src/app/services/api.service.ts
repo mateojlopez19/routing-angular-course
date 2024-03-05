@@ -13,9 +13,8 @@ export class ApiService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  public getAllProducts(sort: string): Observable<IProduct[]> {
-    let params = sort  ? `?sort=${sort}` : '';
-    return this._httpClient.get<IProduct[]>(`${this.baseURL}${params}`);
+  public getAllProducts(): Observable<IProduct[]> {
+    return this._httpClient.get<IProduct[]>(`${this.baseURL}`);
   }
 
   // Get a single product by its id
